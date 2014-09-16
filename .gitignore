@@ -1,0 +1,6 @@
+*.metadata*
+*.setting*
+*bin*
+*.class
+*~
+*.recommender*
