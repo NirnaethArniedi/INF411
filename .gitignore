@@ -5,4 +5,4 @@
 *~
 *.recommender*
 */.classpath
-#*/.project
+*/.project
