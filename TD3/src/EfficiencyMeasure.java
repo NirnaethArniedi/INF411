@@ -38,17 +38,15 @@ public class EfficiencyMeasure {
 		for(float y : values){
 			if(y>m) m=y;
 		}
-		int lng = values.length;
+		float o1 = (float) size-(size-1)/m;
+		int oun;
+		oun = (int) o1;
 		for(float y : values){
-			float o = y/m;
+			float o = (float) size-y*(size-1)/m;
 			int or;
 			or = (int)o;
-			System.out.println(or);
-			float a = x*size/lng;
-			int ab;
-			ab = (int) a;
-			System.out.println(ab);
-			img.fillAreaBlack(ab,or, 1);
+			img.fillAreaBlack(x,or, 1);
+			img.fillAreaBlack(x, oun, 1);
 			x++;
 		}
 		return img;
