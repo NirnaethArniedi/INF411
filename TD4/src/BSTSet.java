@@ -78,6 +78,13 @@ public class BSTSet // implements OrderedSet
 		  return new BSTSet(TreeNode.union(this.root, t.root));
 	  }
 	  
+	  public BSTSet splitA(int a) {
+		  return new BSTSet(TreeNode.split(a,this.root).a);
+	  }
+	  
+	  public BSTSet splitB(int a) {
+		  return new BSTSet(TreeNode.split(a,this.root).b);
+	  }
 	  /**
 	   * Return a String representing the (ordered) set
 	   */
