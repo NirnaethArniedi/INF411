@@ -32,15 +32,52 @@ public class MergeSort {
 	}
 
 	static void bottomUpMergeSort(Tableau t){
+		int k = 0;
+		int l = t.length();
+		while(l>(1 << k)){
+			int i = 0;
+			//
+			while( l-i>0 ){
+				if(l-i >= ( 1<<(k+1)) ){
+					merge(t,i,i+(1<<k),i+(1<<(k+1)));
+					i=i+(1<<k+1);
+				}
+				else if(l-i>(1<<k) && l-i <(1<<k+1)){
+					merge(t,i,i+(1<<k),l);
+					i=l;
+				}
+				else i=l;
+			}
+			k++;
+		}
 		// à compléter
 	}
 
 	static int findRun(Tableau t, int lo) {
-		return -1; // à supprimer
-		// à compléter
+		int i =lo,j=lo+1;
+		while(j<t.length()){
+			if(t.compare(i++, j)>0)
+				break;
+			j++;
+		}
+		return j;
 	}
 
 	static void naturalMergeSort(Tableau t) {
-		// à compléter
+		int i = 0;
+		//body
+		while(findRun(t,0)<t.length()){
+			i=0;
+			while(i<t.length()){
+				int mi= findRun(t,i);
+				int hi=mi;
+				if(mi<t.length()){
+					hi = findRun(t,mi);
+					merge(t,i,mi,hi);
+					i=hi;
+				}
+				else break;
+			}
+		}
 	}
 }
