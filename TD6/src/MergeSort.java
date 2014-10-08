@@ -36,17 +36,18 @@ public class MergeSort {
 		int l = t.length();
 		while(l>(1 << k)){
 			int i = 0;
+			int dk = 1<<k;
 			//
 			while( l-i>0 ){
-				if(l-i >= ( 1<<(k+1)) ){
-					merge(t,i,i+(1<<k),i+(1<<(k+1)));
-					i=i+(1<<k+1);
+				if(l-i >= 2*dk){
+					merge(t,i,i+dk,i+2*dk);
+					i=i+2*dk;
 				}
-				else if(l-i>(1<<k) && l-i <(1<<k+1)){
-					merge(t,i,i+(1<<k),l);
+				else if(l-i>dk && l-i <2*dk){
+					merge(t,i,i+dk,l);
 					i=l;
 				}
-				else i=l;
+				else break;
 			}
 			k++;
 		}
@@ -65,7 +66,6 @@ public class MergeSort {
 
 	static void naturalMergeSort(Tableau t) {
 		int i = 0;
-		//body
 		while(findRun(t,0)<t.length()){
 			i=0;
 			while(i<t.length()){
